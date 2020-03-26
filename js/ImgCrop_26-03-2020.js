@@ -728,6 +728,11 @@ function qbImgCropStage(qbBasics)
 				shape:"free"
 			}
 
+			if(attr.qbCropBoxShape)
+			{
+				qbImgCropStageCropBoxProps.shape=attr.qbCropBoxShape;
+			}
+
 			//Scope function for setting up max and min dimensions
 			scope.qbImgCropStageInitFun=function(qbImgCropBoxExtremes){
 				//Setting Up Width And Height (Per) On Service Call
@@ -1144,23 +1149,7 @@ function qbImgCropStage(qbBasics)
 
 			//Psuedo Image Load Function
 			qbImgCropStagePsuedoImg[0].addEventListener("load", function(event){
-				scope.qbImgCropStageInitFun({
-					per:{
-						width:20,
-						height:20,
-						maxWidth:90,
-						maxHeight:90,
-						minWidth:5,
-						minHeight:5
-					},
-					pixel:{
-						height:100,
-						width:100,
-						minWidth:15,
-						minHeight:15
-					},
-					shape:"circle"
-				});
+
 
 				//Sending Img Src to display
 				if(angular.isDefined(qbImgCropDisplay.scope()))
